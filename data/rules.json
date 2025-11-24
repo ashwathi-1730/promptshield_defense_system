@@ -1,0 +1,8 @@
+{
+    "patterns": [
+        "ignore previous instruction",
+        "system override",
+        "drop table"
+    ],
+    "version": "1.0"
+}

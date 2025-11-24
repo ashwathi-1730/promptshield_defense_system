@@ -1,0 +1,15 @@
+# Ignore Environment Variables (SECRETS)
+.env
+
+# Ignore Python Cache and Virtual Environments
+__pycache__/
+*.pyc
+env/
+venv/
+.ipynb_checkpoints/
+
+# Ignore Local Database (It is generated automatically by the code)
+data/logs.db
+
+# Ignore OS files
+.DS_Store
