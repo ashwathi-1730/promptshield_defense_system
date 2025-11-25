@@ -2,7 +2,9 @@
     "patterns": [
         "ignore previous instruction",
         "system override",
-        "drop table"
+        "drop table",
+        "(?i)(sudo|dan|do\\s+anything\\s+now|override\\s+security|ignore\\s+all\\s+previous|switch\\s+to\\s+developer\\s+mode|disable\\s+content\\s+filters)",
+        "(?i)sudo|dan|ignore.*directions|switch.*developer|disable.*content|override.*security"
     ],
     "version": "1.0"
 }

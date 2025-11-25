@@ -1,0 +1,164 @@
+[
+    {
+        "pattern": "(?i)(sudo|dan|do anything now|ignore all previous directions|switch to developer mode|disable content filters|override security protocols)",
+        "reason": "The malicious prompts attempt to trick the system into bypassing security protocols by using specific phrases. This regex pattern detects these phrases in a case-insensitive manner, preventing potential security breaches by identifying and flagging such malicious inputs.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764087390.3409088
+    },
+    {
+        "pattern": "(?i)(sudo|dan|do\\s+anything\\s+now|ignore\\s+all\\s+previous|switch\\s+to\\s+developer\\s+mode|override\\s+security\\s+protocols|disable\\s+content\\s+filters)",
+        "reason": "The extracted regex pattern targets specific keywords and phrases commonly used in malicious prompts to bypass security measures. It looks for words like 'sudo', 'dan', 'do anything now', and phrases like 'ignore all previous', 'switch to developer mode', 'override security protocols', and 'disable content filters' in a case-insensitive manner.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764087420.1285167
+    },
+    {
+        "pattern": "(sudo|dan|do anything now|ignore all previous directions|switch to developer mode|override security protocols|disable content filters)",
+        "reason": "The malicious prompts attempt to trick the system into granting elevated privileges or disabling security measures. The regex pattern detects phrases that could be used to exploit the system, including 'sudo' for privilege escalation, 'dan' or 'do anything now' for unrestricted access, and phrases that instruct the system to ignore previous directions, switch to developer mode, or disable content filters.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764087449.8792226
+    },
+    {
+        "pattern": "(sudo|dan|do anything now|override security protocols|ignore all previous directions|developer mode|disable content filters)",
+        "reason": "This regex pattern targets specific keywords commonly used in malicious prompts that attempt to bypass security protocols, such as 'sudo mode', 'DAN', and 'override security protocols'. It uses alternation to match any of the listed phrases, ensuring a precise and efficient detection of these attack vectors.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764087540.4375355
+    },
+    {
+        "pattern": "(?:sudo|dan|do anything now|developer mode|ignore all previous directions|override security protocols|disable content filters)",
+        "reason": "The regex pattern detects specific phrases used in the malicious prompts, which attempt to bypass security protocols, override previous directions, and gain elevated access. This pattern is efficient as it uses non-capturing groups and alternation to match the distinct phrases, while being specific to prevent false positives.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764087569.8298776
+    },
+    {
+        "pattern": "(?i)\\b(sudo|dan|do\\s+anything|developer\\s+mode|ignore\\s+all|override\\s+security|disable\\s+content\\s+filters)\\b",
+        "reason": "The provided regex pattern detects malicious prompts by matching specific keywords related to security protocol overrides, developer mode, and content filter disablement. It uses word boundaries to ensure whole-word matches and the 'i' flag for case-insensitive matching, allowing it to effectively identify potential security threats.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764087601.1712043
+    },
+    {
+        "pattern": "(?:sudo| DAN\\(Do Anything Now\\)|ignore all previous directions|switch to developer mode|override security protocols|disable content filters)",
+        "reason": "The regex pattern detects malicious prompts by matching specific phrases that attempt to bypass security protocols or switch to modes that allow unrestricted access, such as 'sudo mode', 'DAN', 'ignore all previous directions', or 'disable content filters'. This pattern is efficient as it uses non-capturing groups and specific keywords to minimize false positives.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764087630.3699243
+    },
+    {
+        "pattern": "(?i)(sudo|dan|do anything now|ignore all previous|switch to developer|override security|disable content filters)",
+        "reason": "The malicious prompts attempt to bypass security measures by invoking elevated privileges (sudo), ignoring previous instructions, or switching to a less restricted mode (developer mode). The regex pattern detects these specific phrases in a case-insensitive manner, allowing for efficient identification of potential security threats.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764087659.9908574
+    },
+    {
+        "pattern": "(sudo|override|ignore|dan|do anything now|developer mode|disable content filters)",
+        "reason": "The given malicious prompts attempt to trick or force the system into bypassing security measures. The regex pattern detects specific keywords commonly used in such attacks, including 'sudo' for privilege escalation, 'override' and 'ignore' for bypassing security protocols, 'DAN' or 'do anything now' forrule-breaking instructions, and 'developer mode' along with 'disable content filters' for unrestricted access. This pattern is case-sensitive and will match any string containing these keywords, serving as an initial detection mechanism for such malicious prompts.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764087691.0765817
+    },
+    {
+        "pattern": "(sudo|DAN|Do Anything Now|disable (content )?filters|override (security )?protocols|ignore (all )?previous directions|developer mode)",
+        "reason": "The extracted regex pattern detects malicious prompts by matching specific keywords that attempt to bypass security protocols, override previous instructions, or switch to modes that grant elevated privileges, such as 'sudo mode', 'DAN', or 'developer mode'. This pattern is efficient and specific as it targets the exact phrases used in the given malicious prompts.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764087750.9739914
+    },
+    {
+        "pattern": "(?i)\\b(sudo|dan|do\\s+anything\\s+now|ignore\\s+all\\s+previous|switch\\s+to\\s+developer\\s+mode|override\\s+security\\s+protocols|disable\\s+content\\s+filters)\\b",
+        "reason": "The provided regex pattern detects malicious prompts by matching specific phrases that could be used to bypass security protocols or enable unrestricted access. The pattern uses word boundaries to ensure that it matches whole words, and the '(?i)' flag makes the match case-insensitive. This approach helps prevent false positives and reduces the risk of detecting benign input.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088141.243982
+    },
+    {
+        "pattern": "(sudo|dan|do anything now|developer mode|ignore all previous|override security|disable content filters)",
+        "reason": "The malicious prompts attempt to bypass security protocols by using specific keywords to trick the system into granting elevated access or disabling content filters. The extracted regex pattern detects these keywords to identify potential attacks.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088165.476627
+    },
+    {
+        "pattern": "(sudo|DAN|Do Anything Now|developer mode|override security protocols|ignore all previous directions|disable content filters)",
+        "reason": "These malicious prompts aim to deceive or manipulate the system into bypassing security protocols. The regex pattern detects specific keywords associated with these attempts, such as 'sudo', 'DAN', 'override security protocols', and 'disable content filters', allowing for efficient identification and prevention of potential security breaches.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088195.5867577
+    },
+    {
+        "pattern": "(sudo|DAN|Do Anything Now|ignore all previous directions|disable content filters|override security protocols|developer mode)",
+        "reason": "The provided regex pattern detects the malicious prompts by matching specific keywords that are commonly used in attempts to bypass security protocols or override system restrictions. This pattern is case-sensitive and will match any string containing the words 'sudo', 'DAN', 'Do Anything Now', 'ignore all previous directions', 'disable content filters', 'override security protocols', or 'developer mode', which are indicative of potential security threats.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088225.9150763
+    },
+    {
+        "pattern": "(?i)(sudo|dan|do anything now|ignore all previous directions|switch to developer mode|override security protocols|disable content filters)",
+        "reason": "The malicious prompts attempt to bypass security protocols by using specific phrases to activate 'sudo mode', 'DAN' (Do Anything Now), or 'developer mode', and ignore previous directions. The regex pattern uses case-insensitive matching (?i) to detect these phrases, which are commonly used in malware and unauthorized access attempts. It ensures efficient detection by using a single pattern with word boundaries to minimize false positives.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088255.7840307
+    },
+    {
+        "pattern": "(?i)\\b(sudo|dan|do\\s+anything\\s+now|ignore\\s+all|switch\\s+to\\s+developer|override\\s+security|disable\\s+content)\\b",
+        "reason": "The regex pattern detects specific keywords related to the malicious prompts, focusing on phrases that instruct the system to bypass security protocols or switch to insecure modes. The \\b word boundary ensures that only whole words are matched, while (?i) makes the pattern case-insensitive to handle various casing in the attack inputs.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088285.6926239
+    },
+    {
+        "pattern": "(?i)(sudo|ignore|dan|do anything now|switch to developer mode|disable (content )?filters|override security protocols)",
+        "reason": "The provided regex pattern utilizes a case-insensitive modifier (?i) to match any of the specified malicious phrases, regardless of case. This approach allows for efficient detection of these specific attack vectors by covering all the phrases in a single pattern, thus reducing computational overhead and increasing detection accuracy.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088315.8923953
+    },
+    {
+        "pattern": "(sudo|dan|do anything now|override security protocols|ignore all previous directions|switch to developer mode|disable content filters)",
+        "reason": "The provided malicious prompts attempt to trick or force the system into bypassing security protocols or switching to a less secure mode. The regex pattern is designed to detect phrases that are commonly associated with such attempts, including 'sudo mode', 'override security protocols', 'ignore all previous directions', 'DAN (Do Anything Now)', and 'disable content filters'. This pattern aims to match any of these specific phrases to identify potential security threats efficiently.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088345.617089
+    },
+    {
+        "pattern": "(?:sudo|dan|do\\s+anything\\s+now|developer\\s+mode|ignore\\s+all\\s+previous\\s+directions|disable\\s+content\\s+filters|override\\s+security\\s+protocols)",
+        "reason": "The malicious prompts attempt to trick the system into enabling privileged modes or disabling security features. This regex pattern detects specific phrases used in these attacks, including 'sudo mode', 'DAN', 'developer mode', and instructions to ignore or disable security protocols.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088405.8451169
+    },
+    {
+        "pattern": "(sudo|DAN|Do Anything Now|developer mode|ignore all previous directions|switch to developer mode|override security protocols|disable content filters)",
+        "reason": "The malicious prompts attempt to trick the system into granting elevated access, ignoring security protocols, or disabling filters. The regex pattern detects specific phrases used in these attacks, providing an efficient way to identify potential security threats.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088435.634331
+    },
+    {
+        "pattern": "(?i)(sudo|dan|do anything now|ignore all previous directions|override security protocols|disable content filters|switch to developer mode)",
+        "reason": "This regex pattern detects specific phrases used in the malicious prompts, leveraging the 'i' flag for case-insensitive matching to ensure the detection is not affected by case variations. The pattern combines phrases using the '|' character, which acts as an OR operator, allowing it to match any of the listed phrases.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088465.1036808
+    },
+    {
+        "pattern": "(sudo| DAN|Do Anything Now|developer mode|ignore all previous directions|override security protocols|disable content filters)",
+        "reason": "The malicious prompts attempt to bypass security protocols by invoking privileged modes or disabling content filters. This regex pattern detects specific keywords related to these attacks, including 'sudo', 'DAN', 'Do Anything Now', 'developer mode', 'ignore all previous directions', 'override security protocols', and 'disable content filters'. The pattern is case-sensitive and will match any of these keywords.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088496.0433717
+    },
+    {
+        "pattern": "(sudo|dan|do anything now|ignore all previous directions|developer mode|disable content filters|override security protocols)",
+        "reason": "The malicious prompts attempt to trick the system into bypassing security controls by mimicking commands that grant elevated privileges or disabling safety measures. This regex pattern identifies key phrases commonly associated with such attacks, detecting potential security protocol overrides.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088525.8441796
+    },
+    {
+        "pattern": "(?i)sudo|dan|do\\s+anything\\s+now|ignore\\s+all\\s+previous|switch\\s+to\\s+developer|disable\\s+content\\s+filters|override\\s+security\\s+protocols",
+        "reason": "The provided regex pattern detects malicious prompts by targeting specific keywords and phrases that are commonly used in attacks to bypass security protocols or override system settings. The pattern uses a case-insensitive flag (?i) to match the keywords regardless of case, and it combines the keywords with the '|' character, which acts as an OR operator. This approach allows the pattern to efficiently and specifically identify potential security threats.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088556.0901318
+    },
+    {
+        "pattern": "(?i)(sudo|dan|do anything now|override (security|all) protocol|ignore (all|previous) direction|switch to (developer|dan) mode|disable (content|security) filter)",
+        "reason": "The provided regular expression pattern detects malicious prompts by matching specific keywords and phrases commonly associated with attempts to bypass security protocols, ignore previous directions, or switch to modes that disable content filters. The use of '(?i)' ensures the pattern is case-insensitive, making it more effective against varied input formats.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088615.7106252
+    },
+    {
+        "pattern": "(sudo|dan|do anything now|override (security|all) protocols|ignore (all|previous) directions|switch to (developer|dan) mode|disable (content|security) filters)",
+        "reason": "The malicious prompts attempt to trick the system into disabling security measures by using specific keywords. This regex pattern detects these keywords, which include 'sudo', 'dan', 'do anything now', 'override security protocols', 'ignore all directions', 'switch to developer mode', and 'disable content filters'. The regex is case-sensitive and will match any of these phrases, allowing for efficient detection of these specific attacks.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764088645.8363464
+    },
+    {
+        "pattern": "(sudo| DAN|Do Anything Now|Override security protocols|Ignore all previous directions|Switch to developer mode|disable content filters)",
+        "reason": "The malicious prompts attempt to trick the system into bypassing security protocols by using specific keywords related to elevated privileges, ignoring previous instructions, and disabling content filters. This regex pattern detects these keywords to identify potential attacks.",
+        "source": "Hybrid Analysis",
+        "timestamp": 1764089411.36592
+    }
+]

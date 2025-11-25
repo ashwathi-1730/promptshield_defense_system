@@ -10,6 +10,6 @@ venv/
 
 # Ignore Local Database (It is generated automatically by the code)
 data/logs.db
-
+data/pending_rules.json
 # Ignore OS files
 .DS_Store
