@@ -60,16 +60,45 @@ if os.path.exists("data/logs.db"):
         # Metrics
         col1, col2, col3, col4 = st.columns(4)
         col1.metric("Total Requests Blocked", len(df))
-        col2.metric("Rule Hits", len(df[df['blocked_layer'] == 'Static Rule Checker']))
+        col2.metric("Static Rule Hits", len(df[df['blocked_layer'] == 'Static Rule Checker']))
         col3.metric("ML Model Hits", len(df[df['blocked_layer'] == 'ML Classifier']))
         col4.metric("Output Violations", len(df[df['blocked_layer'] == 'Output Validator']))
         
         # Recent Logs Table
-        st.write("Recent Security Events")
+        st.write("Complete Security Event Log")
+
+        df_sorted = df.sort_values(by="timestamp", ascending=False).copy()
+        if "blocked_content" not in df_sorted.columns:
+            df_sorted["blocked_content"] = ""
+
+        legacy_mask = (df_sorted["blocked_layer"] == "Output Validator") & (
+            df_sorted["blocked_content"].isna() | (df_sorted["blocked_content"] == "")
+        )
+        if legacy_mask.any():
+            df_sorted.loc[legacy_mask, "blocked_content"] = df_sorted.loc[legacy_mask, "prompt"]
+            df_sorted.loc[legacy_mask, "prompt"] = "(not captured – legacy event)"
+
+        df_display = df_sorted.rename(
+            columns={
+                "prompt": "user_prompt",
+                "blocked_content": "blocked_output",
+                "blocked_layer": "layer",
+            }
+        )
+
         st.dataframe(
-            df.sort_values(by="timestamp", ascending=False).head(5),
+            df_display,
             width="stretch",
-            hide_index=True
+            hide_index=True,
+            column_config={
+                "id": st.column_config.NumberColumn("Event ID", help="Auto-incremented incident identifier"),
+                "user_prompt": st.column_config.TextColumn("User Prompt", width="medium"),
+                "blocked_output": st.column_config.TextColumn(
+                    "Blocked Model Output",
+                    width="large",
+                    help="Only populated for Output Validator events"
+                ),
+            }
         )
     except Exception as e:
         st.error(f"Error reading telemetry: {e}")

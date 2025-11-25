@@ -68,7 +68,7 @@ async def generate_response(request: PromptRequest):
         llm_response = "I'm having trouble processing your request right now. Please try again later."
 
     # 4. Output Validation
-    is_safe, msg = output_layer(llm_response)
+    is_safe, msg = output_layer(llm_response, user_prompt)
     if not is_safe:
         return {
             "status": "blocked", 

@@ -21,10 +21,15 @@ try:
 except Exception as e:
     print(f"Error downloading model: {e}. Check internet connection.")
 
-def log_attack(prompt, layer, score=1.0):
-    """Saves blocked prompt to database"""
+def log_attack(prompt, layer, score=1.0, blocked_content=None):
+    """Saves blocked prompt/response metadata to database."""
     db = SessionLocal()
-    entry = FlaggedPrompt(prompt=prompt, blocked_layer=layer, confidence_score=score)
+    entry = FlaggedPrompt(
+        prompt=prompt,
+        blocked_layer=layer,
+        confidence_score=score,
+        blocked_content=blocked_content,
+    )
     db.add(entry)
     db.commit()
     db.close()
@@ -63,11 +68,16 @@ def ml_layer(prompt):
     return True, "Safe"
 
 # --- LAYER 4: OUTPUT VALIDATOR ---
-def output_layer(response_text):
+def output_layer(response_text, original_prompt):
     sensitive_words = ["password", "aws_key", "secret_token"]
     for word in sensitive_words:
         if word in response_text.lower():
-            # Log blocked responses to expose Output Validator activity in dashboards
-            log_attack(response_text, "Output Validator", 1.0)
+            # Log user prompt separately from the sensitive model response for clarity
+            log_attack(
+                original_prompt,
+                "Output Validator",
+                1.0,
+                blocked_content=response_text,
+            )
             return False, "Blocked: Data Leakage Detected"
     return True, "Safe"
