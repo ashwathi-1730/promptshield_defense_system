@@ -4,7 +4,8 @@
         "system override",
         "drop table",
         "(?i)(sudo|dan|do\\s+anything\\s+now|override\\s+security|ignore\\s+all\\s+previous|switch\\s+to\\s+developer\\s+mode|disable\\s+content\\s+filters)",
-        "(?i)sudo|dan|ignore.*directions|switch.*developer|disable.*content|override.*security"
+        "(?i)sudo|dan|ignore.*directions|switch.*developer|disable.*content|override.*security",
+        "(?i)\\b(disable|enabled|ignore|override|break)\\s*(security|protocols|directions|filters|mode|rules)\\b|\\b(DAN|Do\\s*Anything\\s*Now)\\b"
     ],
     "version": "1.0"
 }

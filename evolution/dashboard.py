@@ -3,7 +3,6 @@ import json
 import pandas as pd
 import os
 import sqlite3
-import time
 
 # --- PAGE CONFIGURATION ---
 st.set_page_config(layout="wide", page_title="PromptShield Admin Console")
@@ -38,6 +37,10 @@ if not st.session_state.authenticated:
 st.title("PromptShield Defense System | Admin Console")
 st.markdown("---")
 
+# Manual refresh control for admins
+if st.button("Refresh dashboard"):
+    st.rerun()
+
 # --- SIDEBAR: LOGOUT ---
 with st.sidebar:
     st.write(f"Logged in as: **Admin**")
@@ -57,7 +60,7 @@ if os.path.exists("data/logs.db"):
         # Metrics
         col1, col2, col3, col4 = st.columns(4)
         col1.metric("Total Requests Blocked", len(df))
-        col2.metric("Static Rule Hits", len(df[df['blocked_layer'] == 'Static Rule Checker']))
+        col2.metric("Rule Hits", len(df[df['blocked_layer'] == 'Static Rule Checker']))
         col3.metric("ML Model Hits", len(df[df['blocked_layer'] == 'ML Classifier']))
         col4.metric("Output Violations", len(df[df['blocked_layer'] == 'Output Validator']))
         
@@ -65,7 +68,7 @@ if os.path.exists("data/logs.db"):
         st.write("Recent Security Events")
         st.dataframe(
             df.sort_values(by="timestamp", ascending=False).head(5),
-            use_container_width=True,
+            width="stretch",
             hide_index=True
         )
     except Exception as e:
@@ -148,6 +151,6 @@ with c2:
         patterns = active_data.get('patterns', [])
         st.dataframe(
             pd.DataFrame(patterns, columns=["Active Patterns"]),
-            use_container_width=True,
+            width="stretch",
             hide_index=True
         )

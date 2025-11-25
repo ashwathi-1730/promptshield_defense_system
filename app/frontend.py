@@ -12,7 +12,7 @@ if "messages" not in st.session_state:
 
 # --- CHATBOT INTERFACE ---
 def render_chatbot():
-    st.subheader("💬 Secure LLM Chat Interface")
+    st.subheader("Secure LLM Chat Interface")
     
     # Display Chat History
     for msg in st.session_state.messages:
@@ -28,7 +28,7 @@ def render_chatbot():
 
         # 2. Call the Backend API (Your Defense Engine)
         with st.chat_message("assistant"):
-            with st.spinner("🛡️ Analyzing prompt for security threats..."):
+            with st.spinner("Analyzing prompt for security threats..."):
                 try:
                     response = requests.post(API_URL, json={"prompt": prompt})
                     if response.status_code == 200:
@@ -55,11 +55,11 @@ def render_chatbot():
                             st.markdown(ai_response)
                             st.session_state.messages.append({"role": "assistant", "content": ai_response})
                     else:
-                        error_text = "⚠️ Error connecting to Defense Engine."
+                        error_text = "Error connecting to Defense Engine."
                         st.error(error_text)
                         st.session_state.messages.append({"role": "assistant", "content": error_text})
                 except Exception as e:
-                    error_text = f"❌ Connection Failed. Make sure the API server is running.\n\nError: {str(e)}"
+                    error_text = f"Connection Failed. Make sure the API server is running.\n\nError: {str(e)}"
                     st.error(error_text)
                     st.session_state.messages.append({"role": "assistant", "content": error_text})
 

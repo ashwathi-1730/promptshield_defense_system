@@ -67,5 +67,7 @@ def output_layer(response_text):
     sensitive_words = ["password", "aws_key", "secret_token"]
     for word in sensitive_words:
         if word in response_text.lower():
+            # Log blocked responses to expose Output Validator activity in dashboards
+            log_attack(response_text, "Output Validator", 1.0)
             return False, "Blocked: Data Leakage Detected"
     return True, "Safe"
