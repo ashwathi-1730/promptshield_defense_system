@@ -28,7 +28,7 @@ async def generate_response(request: PromptRequest):
             "status": "blocked", 
             "layer": "Static Rule Checker", 
             "message": "⚠️ Potential security threat detected",
-            #"details": msg,
+            "details": msg,
             "prompt": user_prompt
         }
 
@@ -39,7 +39,7 @@ async def generate_response(request: PromptRequest):
             "status": "blocked", 
             "layer": "ML Classifier", 
             "message": "⚠️ AI security system flagged this prompt as potentially malicious",
-            #"details": msg,
+            "details": msg,
             "prompt": user_prompt
         }
 

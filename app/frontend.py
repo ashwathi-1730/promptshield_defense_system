@@ -39,9 +39,9 @@ def render_chatbot():
                             error_msg = f"""
                             🚫 **Security Alert: Prompt Blocked**
                             
-                            **Layer:** {data['layer']}  
+                            
                             **Reason:** {data['message']}  
-                            **Details:** {data.get('details', 'N/A')}
+                            
                             
                             ---
                             *Your prompt was flagged as potentially malicious and has been blocked for security reasons. Please rephrase your request.*
